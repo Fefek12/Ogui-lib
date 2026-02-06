@@ -1,10 +1,10 @@
 local DEFAULT_FONT_SIZE = 14
 
-Ogui = {}
-Ogui.__index = Ogui
+Frame = {}
+Frame.__index = Frame
 
-function Ogui.new(rgba)
-    local obj = setmetatable({}, Ogui)
+function Frame.new(rgba)
+    local obj = setmetatable({}, Frame)
     obj.elements = {}
     obj.width = 0
     obj.height = 0
@@ -13,7 +13,7 @@ function Ogui.new(rgba)
     return obj
 end
 
-function Ogui:add(element)
+function Frame:add(element)
     table.insert(self.elements, element)
 
     self.width = 0
@@ -28,7 +28,7 @@ function Ogui:add(element)
     end
 end
 
-function Ogui:draw(x, y)
+function Frame:draw(x, y)
     self.pos = {x = x, y = y}
 
     love.graphics.setColor(self.color)
@@ -47,15 +47,15 @@ function Ogui:draw(x, y)
     end
 end
 
-function Ogui:extend(extension)
+function Frame:extend(extension)
     return extension()
 end
 
-function Ogui:getSize()
+function Frame:getSize()
     return self.width, self.height
 end
 
-function Ogui:isHovered()
+function Frame:isHovered()
     local mx, my = love.mouse.getPosition()
 
     if not self.pos or not self.pos.x or not self.pos.y then return false end
@@ -65,7 +65,7 @@ function Ogui:isHovered()
     return false
 end
 
-function Ogui:destroy()
+function Frame:destroy()
     for i = #self.elements, 1, -1 do
         self.elements[i] = nil
     end
@@ -105,4 +105,24 @@ function Text:draw(x, y)
 
     love.graphics.setColor(self.color)
     love.graphics.draw(t, x, y)
+end
+
+Void = {}
+Void.__index = Void
+
+function Void.new(width, height, rgba)
+    local obj = setmetatable({}, Void)
+    obj.width = width
+    obj.height = height
+    obj.color = rgba or {1, 1, 1, 0}
+    return obj
+end
+
+function Void:getSize()
+    return self.width, self.height
+end
+
+function Void:draw(x, y)
+    love.graphics.setColor(self.color)
+    love.graphics.rectangle("fill", x, y, self.width, self.height)
 end

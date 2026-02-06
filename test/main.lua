@@ -12,7 +12,7 @@ local function hover()
 
     local m = math.sqrt((mx - x) ^ 2 + (my - y) ^ 2)
 
-    local ui = Ogui.new({0.2, 0.2, 0.2, 1})
+    local ui = Frame.new({0.2, 0.2, 0.2, 1})
     ui:add(Text.new("BALL", 3, {1, 1, 1, 1}))
     ui:add(Text.new("just a white ball", 1, {1, 1, 1, 1}))
 
@@ -29,7 +29,7 @@ function love.load()
     y = love.graphics.getHeight() / 2
     r = 100
     BallColor = {1,1,1,1}
-    btn = Ogui.new({1, 0, 0, 1})
+    btn = Frame.new({1, 0, 0, 1})
     btn:add(Text.new("just a button!", 2, {0, 0, 0, 1}))
 end
 

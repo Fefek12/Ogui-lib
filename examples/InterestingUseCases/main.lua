@@ -7,11 +7,11 @@
 package.path = package.path .. ";../?.lua"
 require("Ogui-lib")
 
-local cardHold = Ogui.new({0.5, 0.5, 0.5, 1})
+local cardHold = Frame.new({0.5, 0.5, 0.5, 1})
 cardHold:add(Text.new("insert card", 1, {0, 0, 0, 1}))
 
-local card = Ogui.new({0, 0, 1, 1})
-card:add(Text.new("CARD", 2, {0, 0, 0, 1}))
+local card = Frame.new({0, 0, 1, 1})
+card:add(Void.new(60, 25, nil)) -- Void object sets width and height (it's just a rectangle)
 
 local isCard = false
 local doorColor = {0.2, 0.2, 0.2, 1}
@@ -27,7 +27,7 @@ local function cardExtension()
         end
     else
         if isCard then
-            return true
+            return true -- every extension returns its function value (here:false)
         end
         card:draw(0, 0)
     end

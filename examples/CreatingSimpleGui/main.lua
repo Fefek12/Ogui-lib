@@ -7,7 +7,7 @@
 package.path = package.path .. ";../?.lua"
 require("Ogui-lib")
 
-local gui = Ogui.new({0, 0, 0, 1}) -- basic form that automatically scales
+local gui = Frame.new({0, 0, 0, 1}) -- basic form that automatically scales
 gui:add(Text.new("This is simple text", 2, {1, 1, 1, 1})) -- you can insert any object here not only the Text
 gui:add(Text.new("You can choose any color or scale and it will be scaled correctly!", 1, {1, 1, 1, 1}))
 

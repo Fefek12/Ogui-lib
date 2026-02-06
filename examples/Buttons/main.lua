@@ -9,7 +9,7 @@ require("Ogui-lib")
 
 local bg = {0, 0, 0, 1}
 
-local button = Frame.new({1, 0, 1, 1}) -- yes you can make a button from our simple form
+local button = Frame.new({1, 0, 1, 1}) -- yes you can make a button from our simple frame
 button:add(Text.new("simple button", 2, {1, 1, 1, 1,})) -- give our button a text
 
 function love.load()
@@ -22,7 +22,7 @@ function love.draw()
 end
 
 function love.update(dt)
-    button:extend(function () -- you can extend the normal form by giving it a function!
+    button:extend(function () -- you can extend the normal frame by giving it a function!
         if button:isHovered() and love.mouse.isDown(1) then
             bg = {1, 1, 1, 1}
     	end

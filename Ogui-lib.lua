@@ -1,3 +1,6 @@
+-- Ogui-lib version 1.1
+-- made with ♥️ by Fefek
+
 local DEFAULT_FONT_SIZE = 14
 
 Frame = {}
@@ -14,6 +17,8 @@ function Frame.new(rgba)
 end
 
 function Frame:add(element)
+    if not element then return false end
+
     table.insert(self.elements, element)
 
     self.width = 0
@@ -71,6 +76,15 @@ function Frame:destroy()
     end
     self.elements = nil
     setmetatable(self, nil)
+    return true
+end
+
+function Frame:clear()
+    for i in pairs(self.elements) do
+        table.remove(self.elements, i)
+    end
+    self.width = 0
+    self.height = 0
     return true
 end
 
